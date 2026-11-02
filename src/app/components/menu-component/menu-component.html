@@ -1,0 +1,132 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top border-bottom border-secondary border-opacity-25"
+>
+  <div class="container">
+    <!-- Logo / Nombre de la App -->
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" routerLink="/">
+      <span class="fs-4">🎬</span>
+      <span class="tracking-wide">Angular<span class="text-primary">Series</span></span>
+    </a>
+
+    <!-- Botón hamburguesa para dispositivos móviles -->
+    <button
+      class="navbar-toggler border-0 shadow-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Enlaces y Contenido del Navbar -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3 gap-lg-2">
+        <li class="nav-item">
+          <a
+            class="nav-link active px-3 rounded-pill bg-primary bg-opacity-10 text-primary fw-semibold"
+            aria-current="page"
+            [routerLink]="['/']"
+            >Inicio</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" [routerLink]="['/create']">Crear Personaje</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" [routerLink]="['/update']">Modificar Personaje</a>
+        </li>
+
+        <!-- Estado del Usuario (Integrado con Bootstrap) -->
+        <li class="nav-item d-flex align-items-center">
+          @if (usuario(); as dato) {
+            <span class="nav-link text-light px-3 fw-semibold d-flex align-items-center gap-1">
+              <span class="text-primary">👤</span> {{ dato.apellido }}
+            </span>
+          } @else {
+            <span class="nav-link text-danger px-3 small fw-medium"> Sin usuario </span>
+          }
+        </li>
+
+        <!-- Menú desplegable (Dropdown) -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle px-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Series
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-dark shadow border-secondary border-opacity-25 mt-2"
+          >
+          @for(serie of series; track serie.idSerie){
+            <li>
+              <a class="dropdown-item py-2" [routerLink]="['/serie/', serie.idSerie]">{{serie.nombre}}</a>
+            </li>
+          }
+            <!-- <li><a class="dropdown-item py-2" routerLink="/genero/scifi">🚀 Ciencia Ficción</a></li>
+            <li>
+              <a class="dropdown-item py-2" routerLink="/genero/accion">💥 Acción y Aventura</a>
+            </li>
+            <li><a class="dropdown-item py-2" routerLink="/genero/drama">🎭 Drama</a></li>
+            <li>
+              <a class="dropdown-item py-2" routerLink="/genero/thriller">🕵️‍♂️ Suspenso / Thriller</a>
+            </li> -->
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Buscador rápido -->
+      <form class="d-flex gap-2 align-items-center mt-3 mt-lg-0 me-lg-3" role="search">
+        <div class="input-group input-group-sm">
+          <input
+            class="form-control bg-secondary bg-opacity-25 text-light border-secondary border-opacity-50 px-3 py-2 rounded-start-pill"
+            type="search"
+            placeholder="Buscar serie..."
+            aria-label="Buscar"
+          />
+          <button class="btn btn-outline-primary px-3 rounded-end-pill" type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Bloque de Autenticación (Iniciar sesión y Cerrar sesión) -->
+      <div
+        class="d-flex align-items-center gap-3 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-secondary border-opacity-25 border-top-0-lg"
+      >
+        <!-- Iniciar sesión -->
+        <a
+          class="nav-link text-light text-opacity-75 text-opacity-100-hover px-2 py-1 transition-all"
+          [routerLink]="['/login']"
+        >
+          Iniciar sesión
+        </a>
+
+        <!-- Cerrar sesión -->
+        <button
+          class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1"
+          (click)="cerrarSesion()"
+        >
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

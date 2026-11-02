@@ -1,0 +1,57 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-85 py-5">
+  <div class="row w-100 justify-content-center">
+    <div class="col-12 col-md-8 col-lg-5">
+      <!-- Tarjeta contenedora oscura -->
+      <div
+        class="card bg-dark text-light border border-secondary border-opacity-25 shadow-lg rounded-4 p-4 p-md-5"
+      >
+        <!-- Título -->
+        <h1 class="h3 fw-bold text-center mb-4 tracking-tight">Inicia Sesión</h1>
+
+        <!-- Formulario -->
+        <form #formLogin="ngForm">
+          <!-- Campo Usuario -->
+          <div class="mb-3">
+            <label for="cajausuario" class="form-label text-secondary small fw-semibold"
+              >Usuario</label
+            >
+            <input
+              type="text"
+              id="cajausuario"
+              name="cajausuario"
+              #cajausuario
+              class="form-control bg-secondary bg-opacity-25 text-light border-secondary border-opacity-50 py-2 shadow-none"
+              placeholder="Introduce tu usuario"
+            />
+          </div>
+
+          <!-- Campo Password -->
+          <div class="mb-4">
+            <label for="cajapassword" class="form-label text-secondary small fw-semibold"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="cajapassword"
+              name="cajapassword"
+              #cajapassword
+              class="form-control bg-secondary bg-opacity-25 text-light border-secondary border-opacity-50 py-2 shadow-none"
+              placeholder="••••••••"
+            />
+          </div>
+
+          <!-- Botón de Enviar -->
+          <div class="d-grid">
+            <button
+              type="button"
+              (click)="login()"
+              class="btn btn-primary py-2 fw-semibold rounded-pill shadow-sm"
+            >
+              Enviar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

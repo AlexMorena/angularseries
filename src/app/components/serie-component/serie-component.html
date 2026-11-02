@@ -1,0 +1,11 @@
+<h1>Series</h1>
+
+@if(serie){
+    <h3>idSerie: {{serie.idSerie}}</h3>
+    <h3>Nombre: {{serie.nombre}}</h3>
+    <img src={{serie.imagen}} style="width: 150px; height: 150px;"/>
+    <h3>Puntuacion: {{serie.puntuacion}}</h3>
+    <h3>Año: {{serie.anyo}}</h3>
+}@else {
+    <p>Cargando...</p>
+}
